@@ -6,5 +6,6 @@
 # @File     :   config.py
 # @Desc     :   
 
-AAPL_PATH = "data/aapl.us.txt"
-GOOG_PATH = "data/goog.us.txt"
+AAPL_PATH: str = "data/aapl.us.txt"
+GOOG_PATH: str = "data/goog.us.txt"
+COLS: list[str] = ["Open", "High", "Low", "Close"]
