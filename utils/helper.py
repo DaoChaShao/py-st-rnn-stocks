@@ -6,6 +6,8 @@
 # @File     :   helper.py
 # @Desc     :   
 
+from sklearn.decomposition import PCA
+from sklearn.preprocessing import StandardScaler, MinMaxScaler
 from pandas import DataFrame, read_csv
 from tensorflow.keras.callbacks import Callback
 from time import perf_counter
@@ -130,3 +132,27 @@ def txt_reader(filepath: str) -> DataFrame:
     :return: a DataFrame
     """
     return read_csv(filepath, delimiter=",", encoding="utf-8")
+
+
+def data_standardiser(data: DataFrame):
+    """ Standardise the data
+    :param data: a DataFrame
+    :return: a DataFrame
+    """
+    scaler = StandardScaler()
+    return scaler.fit_transform(data)
+
+
+def data_normaliser(data: DataFrame):
+    """ Normalise the data
+    :param data: a DataFrame
+    :return: a DataFrame
+    """
+    scaler = MinMaxScaler()
+    return scaler.fit_transform(data)
+
+
+def importance_analyser(arr) -> list[float]:
+    pca = PCA()
+    pca.fit(arr)
+    return pca.explained_variance_ratio_.tolist()
