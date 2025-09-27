@@ -57,7 +57,6 @@ with sidebar:
             )
 
             session_state["importance"]: list[float] = importance_analyser(session_state["stan"])
-            print(len(session_state["importance"]))
             session_state["importance"]: DataFrame = DataFrame({
                 "Feature": COLS,
                 "Importance": session_state["importance"],
