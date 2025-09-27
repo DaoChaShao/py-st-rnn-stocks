@@ -6,3 +6,5 @@
 # @File     :   config.py
 # @Desc     :   
 
+AAPL_PATH = "data/aapl.us.txt"
+GOOG_PATH = "data/goog.us.txt"
