@@ -35,18 +35,13 @@ with sidebar:
                 with Timer("Data Loading") as session_state["lTimer"]:
                     session_state["raw"]: DataFrame = txt_reader(AAPL_PATH)
                     session_state["raw"].drop(columns=["Volume", "OpenInt"], inplace=True)
+                    session_state["raw"].drop(columns=["Date"], inplace=True)
             rerun()
     else:
         empty_messages.info(f"{session_state["lTimer"]} Data loaded successfully.")
 
         cols: list[str] = session_state["raw"].columns.tolist()
 
-        x: str = selectbox(
-            "Select the feature to be x-axis",
-            options=cols, index=0, disabled=True,
-            help="Select the feature to display in the chart below.",
-        )
-        cols.remove(x)
         y: str = multiselect(
             "Select the feature to be y-axis",
             options=cols,
@@ -55,7 +50,7 @@ with sidebar:
 
         empty_data_title.markdown("#### Raw Data Overview")
         empty_data_table.data_editor(session_state["raw"], hide_index=True, disabled=True, width="stretch")
-        empty_data_chart.line_chart(session_state["raw"], x=x, y=y, width="stretch")
+        empty_data_chart.line_chart(session_state["raw"], y=y, width="stretch")
 
         with col_dup:
             dup_count: int = session_state["raw"].duplicated().sum()
