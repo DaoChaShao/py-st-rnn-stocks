@@ -5,6 +5,8 @@
 
 ### Features
 
+- implement data loading and preparation interface in preparation.py ([6c9012a](https://github.com///commit/6c9012aeca8ebeb686a05352d05b000b5e5a6867))
+- add txt_reader function to read text files into DataFrame ([c010219](https://github.com///commit/c010219a638a47fb89dafb452a63662ed9cfc391))
 - integrate layout configuration and page setter in main function ([8442a7c](https://github.com///commit/8442a7c9b130e86790c0af059350b565955383cf))
 - add layout.py for page configuration and sidebar navigation in RNN Stocks Prediction app ([8192c79](https://github.com///commit/8192c790668f7ced7cd7f9833393433870ea9eec))
 - enhance home.py with introductory title and information message for CNN application ([78ca145](https://github.com///commit/78ca145433a0bae2f9830cb130c27243924e7420))
@@ -32,12 +34,15 @@
 
 ### Chore
 
+- update streamlit and pandas-stubs versions in requirements.txt ([a1535b0](https://github.com///commit/a1535b01166dfc1cf32289885266070457cb7be6))
 - rename config.py and add paths for AAPL and GOOG data files ([6cfc6a5](https://github.com///commit/6cfc6a5017e782867469fc3106342e460ffab040))
 - rename __init__.py from ../utlis directory ([e266730](https://github.com///commit/e26673056c08b232a56c23d2acf953732f620c88))
 - rename .gitignore file from ../utlis directory ([868d674](https://github.com///commit/868d674f3726be43f08dce37d9fc22e59c41a945))
 
 ### Docs
 
+- reduce the amount of data ([0814e58](https://github.com///commit/0814e58ce9c7fd4b312e4c52fcc95164f0351893))
+- update CHANGELOG.md to include recent feature additions and enhancements ([477365c](https://github.com///commit/477365cbc57a43124ed8c18f0f474935bee73c41))
 - update README.zh-CN to reflect changes in dataset and project focus for RNN stock prediction ([376f63b](https://github.com///commit/376f63bf267536d42cad0eb1916c89040bf642c9))
 - update README to reflect changes in dataset and project focus for RNN stock prediction ([4144d1c](https://github.com///commit/4144d1c1880090c428f8b75092baa8ca16e9077e))
 
