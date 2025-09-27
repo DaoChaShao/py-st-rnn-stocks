@@ -17,7 +17,7 @@ from utils.helper import Timer, data_standardiser, data_normaliser, importance_a
 empty_messages: empty = empty()
 col_stan, col_norm = columns(2, gap="small")
 
-load_sessions: list[str] = ["raw", "stan", "norm", "sTimer"]
+load_sessions: list[str] = ["raw"]
 for session in load_sessions:
     session_state.setdefault(session, None)
 stan_sessions: list[str] = ["stan", "sTimer", "importance"]
@@ -57,6 +57,7 @@ with sidebar:
             )
 
             session_state["importance"]: list[float] = importance_analyser(session_state["stan"])
+            print(session_state["importance"], COLS)
             session_state["importance"]: DataFrame = DataFrame({
                 "Feature": COLS,
                 "Importance": session_state["importance"],
