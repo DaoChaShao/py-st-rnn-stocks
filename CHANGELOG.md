@@ -5,6 +5,9 @@
 
 ### Features
 
+- add caption to display selected training features in the model training interface ([7c8cb29](https://github.com///commit/7c8cb29f5dcd05dc82b367e13fa9885f4236c096))
+- train a new model ([16427d6](https://github.com///commit/16427d6587e340a169086b502c9e9d91abb1aaf0))
+- enhance sequential data extractor to support multiple target columns ([9ba4062](https://github.com///commit/9ba4062192c1a8e015e751076bf86abd064d3457))
 - enhance model training interface with data normalization and session management ([57b3a8f](https://github.com///commit/57b3a8f48173707f8d8a8d7196fe3cda346a8d8b))
 - train a model ([ee5cd60](https://github.com///commit/ee5cd60c93d8838943e97c647ece27661b0e8e6f))
 - add functions for dropping useless columns and extracting sequential data ([8f44f9c](https://github.com///commit/8f44f9cc065e6ee2f2fe8d00dc6b5a99724cf526))
@@ -53,7 +56,7 @@
 
 ### Docs
 
-- update CHANGELOG.md to reflect recent feature additions and enhancements ([7e063fe](https://github.com///commit/7e063fe637934e814a2d3791c3495ad3d5706d40))
+- update CHANGELOG.md to reflect recent feature additions and enhancements ([3d1a138](https://github.com///commit/3d1a1386e10614972c5980acda9c7e5f2142916a))
 - update CHANGELOG.md to include recent feature additions ([d78f1c0](https://github.com///commit/d78f1c09503880447ab10b906a7460dc3742ea39))
 - update CHANGELOG.md to reflect recent feature additions ([1ebbc75](https://github.com///commit/1ebbc758aed2da089c404324e7147f3671809360))
 - reduce the amount of data ([0814e58](https://github.com///commit/0814e58ce9c7fd4b312e4c52fcc95164f0351893))
