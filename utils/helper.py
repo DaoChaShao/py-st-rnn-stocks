@@ -6,6 +6,7 @@
 # @File     :   helper.py
 # @Desc     :   
 
+from numpy import ndarray, array
 from sklearn.decomposition import PCA
 from sklearn.preprocessing import StandardScaler, MinMaxScaler
 from pandas import DataFrame, read_csv
@@ -134,6 +135,13 @@ def txt_reader(filepath: str) -> DataFrame:
     return read_csv(filepath, delimiter=",", encoding="utf-8")
 
 
+def useless_cols_dropper(data: DataFrame) -> DataFrame:
+    """ Drop the useless cols """
+    data.drop(columns=["Volume", "OpenInt"], inplace=True)
+    data.drop(columns=["Date"], inplace=True)
+    return data
+
+
 def data_standardiser(data: DataFrame):
     """ Standardise the data
     :param data: a DataFrame
@@ -153,6 +161,50 @@ def data_normaliser(data: DataFrame):
 
 
 def importance_analyser(arr) -> list[float]:
+    """ Find the importance between different items
+    :param arr: a numpy array
+    :return: a list
+    """
     pca = PCA()
     pca.fit(arr)
     return pca.explained_variance_ratio_.tolist()
+
+
+def sequential_data_extractor(
+        data: DataFrame, timesteps: int,
+        train_rate: float = 0.8,
+        target_col: str | None = None) -> tuple[ndarray, ndarray, ndarray, ndarray]:
+    # Single col
+    if isinstance(target_col, str):
+        target_index = data.columns.get_loc(target_col)
+    # Multiple cols
+    elif isinstance(target_col, list):
+        target_index = [data.columns.get_loc(col) for col in target_col]
+    # All cols
+    elif target_col is None:
+        target_index = list(range(data.shape[1]))
+    else:
+        raise TypeError("target_col must be str or None")
+
+    train_size: int = int(len(data) * train_rate)
+    train: ndarray = data[: train_size].values
+    X_train: list = []
+    y_train: list = []
+    for i in range(len(train) - timesteps):
+        X_train.append(train[i: i + timesteps])
+        y_train.append(train[i + timesteps, target_index])
+
+    test: ndarray = data[train_size:].values
+    X_test: list = []
+    y_test: list = []
+    for i in range(len(test) - timesteps):
+        X_test.append(test[i: i + timesteps])
+        y_test.append(test[i + timesteps, target_index])
+
+    X_train: ndarray = array(X_train)
+    y_train: ndarray = array(y_train)
+    X_test: ndarray = array(X_test)
+    y_test: ndarray = array(y_test)
+    print(type(X_train), type(y_train), type(X_test), type(y_test))
+    print(X_train.shape, y_train.shape, X_test.shape, y_test.shape)
+    return X_train, y_train, X_test, y_test
