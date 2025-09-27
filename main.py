@@ -6,9 +6,13 @@
 # @File     :   main.py
 # @Desc     :   
 
+from utils.layout import page_config, pages_setter
+
+
 def main() -> None:
-    """ Main Function """
-    pass
+    """ streamlit run main.py """
+    page_config()
+    pages_setter()
 
 
 if __name__ == "__main__":
