@@ -5,53 +5,35 @@
 
 **应用简介**
 ---
-本项目使用 Kaggle 上的 [Cat and Dog 数据集](https://www.kaggle.com/datasets/tongpython/cat-and-dog)
-进行卷积神经网络（CNN）的训练和测试。数据集包含猫和狗的图像，适合用于二分类任务和深度学习模型实验。
-
-本项目实现了一个完整的 基于 VGG16 的图像分类流水线，采用 TensorFlow 和 Streamlit 构建。提供 数据准备、模型训练、模型测试 和
-实时预测 功能，适用于二分类图像任务（如猫 vs 狗），支持在训练和测试过程中可视化批次图像。
+本项目使用 Kaggle
+上的 [Huge Stock Market Dataset](https://www.kaggle.com/datasets/borismarjanovic/price-volume-data-for-all-us-stocks-etfs)
+作为数据源，在 Streamlit 前端下练习基于 RNN（LSTM/GRU）的时间序列预测。示例聚焦 Apple（AAPL）与 Google（GOOG /
+GOOGL）日线数据：完成数据预处理（日期对齐、空值处理、归一化、滑动窗口）、训练简单 RNN，并在交互式界面展示预测结果与诊断分析。
 
 **数据描述**
 ---
 
-- **训练集 (train)**  
-  包含两个子数据集：猫和狗。去重后，每个子数据集各有 4000 张图像。  
-  文件名格式如 `cat.0.jpg`、`dog.1.jpg`，标签可通过文件名直接获取。
-
-- **测试集 (test)**  
-  包含两个子数据集：猫和狗。去重后，每个子数据集各有 1000 张图像。  
-  文件名格式同训练集，可直接用于标签推断。
+- **数据集概览**：
+    - 该 Kaggle 数据集提供了美国股票与 ETF 的历史**日线价格与成交量**数据（OHLCV：开盘价 / 最高价 / 最低价 / 收盘价 /
+      成交量）。数据集以每个股票代码为单位分文件存储。
+- **规模与覆盖范围**：
+    - 公共 Kaggle 版本包含数千个股票代码文件（数据集页面/列表显示约 8.5k 文件，下载大小 500+
+      MB），涵盖多只美国股票与 ETF，时间跨度数十年。请准备好进行大规模下载，并选择性处理文件（例如，仅 AAPL 与 GOOG/GOOGL）。
+- **文件格式与命名**：
+    - 文件按证券代码命名（通常为 `<TICKER>.us.txt`，位于数据集文件夹下）。每个文件为纯文本/CSV 格式，行表示交易日期，列包含每日
+      OHLCV
+      数值。可使用 `glob` 或文件搜索查找 `AAPL.us.txt` / `GOOG.us.txt` / `GOOGL.us.txt`。
+- **典型列**：
+    - 预期至少包含：`Date`、`Open`、`High`、`Low`、`Close`、`Volume`（OHLCV）。部分文件或镜像可能包含调整后收盘价或额外列——请始终检查每个股票代码的表头。
+- **RNN 练习注意事项**：
+    - **不要**将整个数据集加载到内存中；仅读取所需的股票代码文件（AAPL、GOOG/GOOGL）。
+    - 检查每个文件的日期范围——部分股票代码起始较晚或存在缺失日期；需对齐交易日历或适当前向填充。
+    - 使用 `MinMaxScaler` 或 `StandardScaler` 对特征（如 `Close`）进行归一化，并构建滑动窗口（如 30 天 → 预测下一天）。
+    - 如果计划重复实验，可将预处理后的序列保存到磁盘（NumPy `.npy` 或 parquet 格式）。
 
 **特色功能**
 ---
 
-- **数据准备**
-    - 从目录中加载图像数据集。
-    - 可自定义训练集与验证集划分比例。
-    - 批量处理提高内存效率。
-    - 可预览批次和单张图像及其标签。
-
-- **数据增强**
-    - 随机水平翻转。
-    - 随机旋转、缩放、平移及色调调整。
-    - 与 VGG16 预处理兼容。
-
-- **模型训练**
-    - 使用预训练 VGG16 卷积基进行迁移学习。
-    - 冻结卷积层加快训练速度。
-    - 全连接层与 Dropout 处理用于二分类。
-    - 通过 Streamlit 实时监控训练指标。
-    - 支持模型保存与删除操作。
-
-- **模型测试**
-    - 在测试集上评估模型性能。
-    - 指标包括：准确率、精确率、召回率、AUC、F1-Score。
-    - 预览测试批次和单张图像的预测及真实标签。
-
-- **实时预测**
-    - 上传图像即可获得即时预测。
-    - 显示图像及对应预测标签。
-    - 支持重置和重新上传进行多次预测。
 
 **快速开始**
 ---
@@ -60,7 +42,7 @@
 2. 使用以下命令安装所需依赖项：`pip install -r requirements.txt`
 3. 使用以下命令运行应用程序：`streamlit run main.py`
 4. 你也可以通过点击以下链接在线体验该应用：  
-   [![Static Badge](https://img.shields.io/badge/Open%20in%20Streamlit-Daochashao-red?style=for-the-badge&logo=streamlit&labelColor=white)](https://vgg-cat-n-dog.streamlit.app/)
+   [![Static Badge](https://img.shields.io/badge/Open%20in%20Streamlit-Daochashao-red?style=for-the-badge&logo=streamlit&labelColor=white)](https://rnn-stocks.streamlit.app/)
 
 **大文件存储（LFS）**
 ---
