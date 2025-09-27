@@ -5,6 +5,12 @@
 
 ### Features
 
+- integrate layout configuration and page setter in main function ([8442a7c](https://github.com///commit/8442a7c9b130e86790c0af059350b565955383cf))
+- add layout.py for page configuration and sidebar navigation in RNN Stocks Prediction app ([8192c79](https://github.com///commit/8192c790668f7ced7cd7f9833393433870ea9eec))
+- enhance home.py with introductory title and information message for CNN application ([78ca145](https://github.com///commit/78ca145433a0bae2f9830cb130c27243924e7420))
+- add helper.py with Timer and custom Keras callback classes for logging metrics ([28f3b09](https://github.com///commit/28f3b090d3b83bab6545210da65a6988623c37aa))
+- add application information section in about.py ([77f0f13](https://github.com///commit/77f0f137c25aacc197b390696461d2b6d5be0247))
+- add CHANGELOG.md with initial version 0.1.0 and feature list ([69510ee](https://github.com///commit/69510ee832df105c6c08eb2e4acef520bca61bad))
 - add train.py with initial metadata and description ([47617cc](https://github.com///commit/47617cc6cca0ee3bc797604ba03dfe6b0ad7fb03))
 - add test.py with initial file structure and metadata ([73a9c16](https://github.com///commit/73a9c164a08bf824bb88b8057c3f03830aacb0bc))
 - add requirements.txt with necessary dependencies for the project ([7ffd6aa](https://github.com///commit/7ffd6aa17c361d1ce1b72279b3cc356fc979cca3))
@@ -23,4 +29,15 @@
 - add initial __init__.py with main function ([7b8c6e6](https://github.com///commit/7b8c6e642eccfb1becaba764401e0289a9b8dc71))
 - add .gitignore to exclude IDE and environment files ([3c4b495](https://github.com///commit/3c4b495ab4a6153cec939a8234713585f3ff80a6))
 - add .gitignore to exclude IDE files and environment settings ([78e085c](https://github.com///commit/78e085c4774a875ac51b5ccd9470327ea3f9cb17))
+
+### Chore
+
+- rename config.py and add paths for AAPL and GOOG data files ([6cfc6a5](https://github.com///commit/6cfc6a5017e782867469fc3106342e460ffab040))
+- rename __init__.py from ../utlis directory ([e266730](https://github.com///commit/e26673056c08b232a56c23d2acf953732f620c88))
+- rename .gitignore file from ../utlis directory ([868d674](https://github.com///commit/868d674f3726be43f08dce37d9fc22e59c41a945))
+
+### Docs
+
+- update README.zh-CN to reflect changes in dataset and project focus for RNN stock prediction ([376f63b](https://github.com///commit/376f63bf267536d42cad0eb1916c89040bf642c9))
+- update README to reflect changes in dataset and project focus for RNN stock prediction ([4144d1c](https://github.com///commit/4144d1c1880090c428f8b75092baa8ca16e9077e))
 
