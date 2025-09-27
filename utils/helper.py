@@ -6,6 +6,7 @@
 # @File     :   helper.py
 # @Desc     :   
 
+from pandas import DataFrame, read_csv
 from tensorflow.keras.callbacks import Callback
 from time import perf_counter
 from typing import override
@@ -121,3 +122,11 @@ class StTFKLoggerFor2Callbacks(Callback):
     def get_history(self):
         """ Get the training history."""
         return self._history
+
+
+def txt_reader(filepath: str) -> DataFrame:
+    """ Read a txt file structurally
+    :param filepath: the path to the file
+    :return: a DataFrame
+    """
+    return read_csv(filepath, delimiter=",", encoding="utf-8")
