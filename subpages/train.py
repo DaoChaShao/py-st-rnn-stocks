@@ -9,7 +9,7 @@
 from os import path, remove
 from pandas import DataFrame
 from streamlit import (empty, sidebar, subheader, session_state,
-                       button, spinner, rerun, number_input, selectbox, multiselect, select_slider,
+                       button, spinner, rerun, number_input, selectbox, multiselect, select_slider, caption,
                        columns, line_chart, data_editor, metric)
 from tensorflow.keras import models, layers
 
@@ -70,11 +70,13 @@ with sidebar:
             print(type(session_state["norm"]), session_state["norm"].shape)
             session_state["norm"] = DataFrame(session_state["norm"], columns=COLS)
 
-            y_norm: str = multiselect(
+            y_norm: list[str] = multiselect(
                 "Select the feature to be trained",
                 options=session_state["norm"].columns.tolist(), default=[MAIN_COL],
                 help="Select the feature to be trained for RNN model.",
             )
+            print(y_norm)
+            caption(f"Note: the feature(s) is/are {", ".join(y_norm)}")
 
             if not y_norm:
                 empty_messages.error("Please select at least one feature to be trained.")
