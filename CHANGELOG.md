@@ -5,6 +5,10 @@
 
 ### Features
 
+- implement data standardization and normalization workflow in train.py ([1d3f01a](https://github.com///commit/1d3f01aa6fffbd7b920358c01bb52dc10e466678))
+- remove 'Date' column from raw data and simplify x-axis selection in preparation.py ([8be0db7](https://github.com///commit/8be0db7289a97792384543ce8cc7648432b2fa33))
+- add data standardisation and normalisation functions in helper.py ([231b7ca](https://github.com///commit/231b7ca93d6c5c275044b5610c864b9871ebf599))
+- add type annotations for file paths and define COLS in config.py ([e1f902a](https://github.com///commit/e1f902af31f038ff2740003a245ec6553391d980))
 - implement data loading and preparation interface in preparation.py ([6c9012a](https://github.com///commit/6c9012aeca8ebeb686a05352d05b000b5e5a6867))
 - add txt_reader function to read text files into DataFrame ([c010219](https://github.com///commit/c010219a638a47fb89dafb452a63662ed9cfc391))
 - integrate layout configuration and page setter in main function ([8442a7c](https://github.com///commit/8442a7c9b130e86790c0af059350b565955383cf))
@@ -41,6 +45,7 @@
 
 ### Docs
 
+- update CHANGELOG.md to include recent feature additions ([dade8e2](https://github.com///commit/dade8e250add286d8f300cc05bdda545cf01e1d4))
 - reduce the amount of data ([0814e58](https://github.com///commit/0814e58ce9c7fd4b312e4c52fcc95164f0351893))
 - update CHANGELOG.md to include recent feature additions and enhancements ([477365c](https://github.com///commit/477365cbc57a43124ed8c18f0f474935bee73c41))
 - update README.zh-CN to reflect changes in dataset and project focus for RNN stock prediction ([376f63b](https://github.com///commit/376f63bf267536d42cad0eb1916c89040bf642c9))
