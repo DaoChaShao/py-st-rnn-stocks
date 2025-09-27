@@ -1,10 +1,15 @@
 <!-- insertion marker -->
 <a name="0.1.0"></a>
 
-## [0.1.0](https://github.com///compare/e8a4b617d1d506c3e46cd42046a738f9d4995db8...0.1.0) (2025-09-27)
+## [0.1.0](https://github.com///compare/e8a4b617d1d506c3e46cd42046a738f9d4995db8...0.1.0) (2025-09-28)
 
 ### Features
 
+- enhance model training interface with data normalization and session management ([57b3a8f](https://github.com///commit/57b3a8f48173707f8d8a8d7196fe3cda346a8d8b))
+- train a model ([ee5cd60](https://github.com///commit/ee5cd60c93d8838943e97c647ece27661b0e8e6f))
+- add functions for dropping useless columns and extracting sequential data ([8f44f9c](https://github.com///commit/8f44f9cc065e6ee2f2fe8d00dc6b5a99724cf526))
+- add main column and model save path to configuration ([9b191b7](https://github.com///commit/9b191b7f4eec3672649d2609aa94f5111eeb98c8))
+- simplify load_sessions by removing unused session types ([061086d](https://github.com///commit/061086d353dae3e7a7f8644908e8b55cbe884144))
 - add Data Analysis page to layout with corresponding title and icon ([8d7d160](https://github.com///commit/8d7d1603f96511cdb1515143c1903ffb991fd075))
 - add data analysis functionality with standardization and normalization in analysis.py ([00004b3](https://github.com///commit/00004b34a1377d6e243f22e6c34170ac6232ac43))
 - remove debug print statement for importance length in train.py ([4f4038b](https://github.com///commit/4f4038b7f4e9212debab74d06d0a5480921f0e7f))
@@ -48,6 +53,7 @@
 
 ### Docs
 
+- update CHANGELOG.md to reflect recent feature additions and enhancements ([7e063fe](https://github.com///commit/7e063fe637934e814a2d3791c3495ad3d5706d40))
 - update CHANGELOG.md to include recent feature additions ([d78f1c0](https://github.com///commit/d78f1c09503880447ab10b906a7460dc3742ea39))
 - update CHANGELOG.md to reflect recent feature additions ([1ebbc75](https://github.com///commit/1ebbc758aed2da089c404324e7147f3671809360))
 - reduce the amount of data ([0814e58](https://github.com///commit/0814e58ce9c7fd4b312e4c52fcc95164f0351893))
