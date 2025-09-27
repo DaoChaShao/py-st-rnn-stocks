@@ -6,3 +6,11 @@
 # @File     :   home.py
 # @Desc     :   
 
+from streamlit import title, expander, caption, empty
+
+empty_messages = empty()
+empty_messages.info("Please check the details at the different pages of core functions.")
+
+title("Convolutional Neural Network (CNN) - VGG16 for Cat & Dog Classification")
+with expander("**INTRODUCTION**", expanded=True):
+    caption("+")
