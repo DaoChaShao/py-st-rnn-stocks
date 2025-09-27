@@ -29,6 +29,7 @@ def pages_setter() -> None:
         "page": [
             "subpages/home.py",
             "subpages/preparation.py",
+            "subpages/analysis.py",
             "subpages/train.py",
             "subpages/test.py",
             "subpages/realtime.py",
@@ -37,6 +38,7 @@ def pages_setter() -> None:
         "title": [
             "Home",
             "Data Preparation",
+            "Data Analysis",
             "Model Training",
             "Model Testing",
             "Real-time Prediction",
@@ -45,6 +47,7 @@ def pages_setter() -> None:
         "icon": [
             ":material/home:",
             ":material/dataset:",
+            ":material/bar_chart:",
             ":material/function:",
             ":material/assignment:",
             ":material/assessment:",
@@ -61,9 +64,10 @@ def pages_setter() -> None:
             Page(page=pages["page"][2], title=pages["title"][2], icon=pages["icon"][2]),
             Page(page=pages["page"][3], title=pages["title"][3], icon=pages["icon"][3]),
             Page(page=pages["page"][4], title=pages["title"][4], icon=pages["icon"][4]),
+            Page(page=pages["page"][5], title=pages["title"][5], icon=pages["icon"][5]),
         ],
         "Information": [
-            Page(page=pages["page"][5], title=pages["title"][5], icon=pages["icon"][5]),
+            Page(page=pages["page"][6], title=pages["title"][6], icon=pages["icon"][6]),
         ],
     }
     pg = navigation(structure, position="sidebar", expanded=True)
