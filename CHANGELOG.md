@@ -5,6 +5,7 @@
 
 ### Features
 
+- remove debug print statement for importance length in train.py ([4f4038b](https://github.com///commit/4f4038b7f4e9212debab74d06d0a5480921f0e7f))
 - implement data standardization and normalization workflow in train.py ([1d3f01a](https://github.com///commit/1d3f01aa6fffbd7b920358c01bb52dc10e466678))
 - remove 'Date' column from raw data and simplify x-axis selection in preparation.py ([8be0db7](https://github.com///commit/8be0db7289a97792384543ce8cc7648432b2fa33))
 - add data standardisation and normalisation functions in helper.py ([231b7ca](https://github.com///commit/231b7ca93d6c5c275044b5610c864b9871ebf599))
@@ -45,6 +46,7 @@
 
 ### Docs
 
+- update CHANGELOG.md to reflect recent feature additions ([1ebbc75](https://github.com///commit/1ebbc758aed2da089c404324e7147f3671809360))
 - update CHANGELOG.md to include recent feature additions ([dade8e2](https://github.com///commit/dade8e250add286d8f300cc05bdda545cf01e1d4))
 - reduce the amount of data ([0814e58](https://github.com///commit/0814e58ce9c7fd4b312e4c52fcc95164f0351893))
 - update CHANGELOG.md to include recent feature additions and enhancements ([477365c](https://github.com///commit/477365cbc57a43124ed8c18f0f474935bee73c41))
