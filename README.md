@@ -5,56 +5,42 @@
 
 **INTRODUCTION**
 ---
-This project uses the [Cat and Dog dataset](https://www.kaggle.com/datasets/tongpython/cat-and-dog) from Kaggle to train
-and evaluate a Convolutional Neural Network (CNN). The dataset contains images of cats and dogs, suitable for binary
-classification tasks and deep learning experiments.
-
-This project is a complete **VGG16-based image classification
-pipeline** implemented with TensorFlow and Streamlit. It provides tools for **data preparation**, **model training**, *
-*testing**, and **real-time prediction**. The application is tailored for **binary image classification** (e.g., cat vs
-dog) and supports visualizing batches of images during training and testing.
+This notebook/app uses
+the [Huge Stock Market Dataset](https://www.kaggle.com/datasets/borismarjanovic/price-volume-data-for-all-us-stocks-etfs)
+from Kaggle to practice time-series forecasting with RNNs (LSTM/GRU) in a Streamlit front-end. We focus on Apple (AAPL)
+and Google (GOOG / GOOGL) daily price series from the dataset, perform standard preprocessing (resampling, missing-value
+handling, scaling, sliding windows), train simple RNN models, and show predictions and diagnostics in an interactive
+Streamlit UI.
 
 **DATA DESCRIPTION**
 ---
 
-- **Training Set (train)**  
-  Contains two subsets: cats and dogs. After removing duplicates, each subset has 4,000 images.  
-  Filenames are like `cat.0.jpg` and `dog.1.jpg`, and labels can be inferred directly from filenames.
+- **Dataset overview**:
+    - The Kaggle dataset provides historical **daily price and volume** data for U.S. stocks and ETFs (OHLCV: Open /
+      High / Low / Close / Volume). This dataset is distributed on Kaggle as a large collection of per-ticker files.
+- **Scale & coverage**:
+    - The public Kaggle release contains thousands of per-ticker files (the dataset page / listings indicate ~8.5k files
+      and ~500+ MB total download size), covering many US stocks and ETFs over multiple decades. Be prepared for a large
+      download and to process files selectively (e.g., only AAPL and GOOG/GOOGL).
+- **File format & naming**:
+    - Files are provided per security (commonly with names like `<TICKER>.us.txt` under the dataset folder). Each file
+      is a plain text/CSV with rows for trading dates and columns containing daily OHLCV values. Use `glob` or file
+      search to find `AAPL.us.txt` / `GOOG.us.txt` / `GOOGL.us.txt`.
+- **Typical columns**:
+    - Expect at least: `Date`, `Open`, `High`, `Low`, `Close`, `Volume` (OHLCV). Some files or mirrors may include
+      adjusted close or extra columns — always inspect the header for each ticker.
 
-- **Test Set (test)**  
-  Contains two subsets: cats and dogs. After removing duplicates, each subset has 1,000 images.  
-  Filenames follow the same format as the training set and can be used to infer labels.
+- Notes for RNN practice:
+    - **Do not** load the entire dataset into memory; just read the ticker files you need (AAPL, GOOG/GOOGL).
+    - Check date ranges per file — some tickers begin later or have missing days; align on trading calendar or
+      forward-fill where appropriate.
+    - Scale features (e.g. `Close`) with `MinMaxScaler` or `StandardScaler` and construct sliding windows (e.g. 30
+      days → predict next day).
+    - Save preprocessed sequences to disk (NumPy `.npy` or parquet) if you plan repeated experiments.
 
 **FEATURES**
 ---
 
-- **Data Preparation**
-    - Load image datasets from directories.
-    - Split training and validation sets with customizable ratio.
-    - Batch processing for memory efficiency.
-    - Preview batches and individual images with labels.
-
-- **Data Augmentation**
-    - Random horizontal flipping.
-    - Random rotation, zoom, translation, and hue adjustments.
-    - Preprocessing compatible with VGG16.
-
-- **Model Training**
-    - Transfer learning using pre-trained VGG16 convolutional base.
-    - Freeze convolutional layers to speed up training.
-    - Fully connected layers with dropout for binary classification.
-    - Visualize training metrics in real-time via Streamlit placeholders.
-    - Save and delete the trained model easily.
-
-- **Model Testing**
-    - Evaluate model performance on test dataset.
-    - Metrics: Accuracy, Precision, Recall, AUC, F1-Score.
-    - Preview test batches and individual images with predicted and true labels.
-
-- **Real-Time Prediction**
-    - Upload an image for immediate prediction.
-    - Display the predicted label alongside the image.
-    - Reset and re-upload functionality for multiple predictions.
 
 **QUICK START**
 ---
@@ -64,7 +50,7 @@ dog) and supports visualizing batches of images during training and testing.
 3. Run the application with the command `streamlit run main.py`.
 4. You can also try the application by visiting the following
    link:  
-   [![Static Badge](https://img.shields.io/badge/Open%20in%20Streamlit-Daochashao-red?style=for-the-badge&logo=streamlit&labelColor=white)](https://vgg-cat-n-dog.streamlit.app/)
+   [![Static Badge](https://img.shields.io/badge/Open%20in%20Streamlit-Daochashao-red?style=for-the-badge&logo=streamlit&labelColor=white)](https://rnn-stocks.streamlit.app/)
 
 **LARGE FILE STORAGE (LFS)**
 ---
