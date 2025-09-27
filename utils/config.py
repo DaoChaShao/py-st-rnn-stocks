@@ -9,3 +9,5 @@
 AAPL_PATH: str = "data/aapl.us.txt"
 GOOG_PATH: str = "data/goog.us.txt"
 COLS: list[str] = ["Open", "High", "Low", "Close"]
+MAIN_COL: str = "Open"
+SAVE_MODEL_PATH: str = "rnn_model.h5"
