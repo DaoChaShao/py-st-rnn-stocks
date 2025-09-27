@@ -173,7 +173,30 @@ def importance_analyser(arr) -> list[float]:
 def sequential_data_extractor(
         data: DataFrame, timesteps: int,
         train_rate: float = 0.8,
-        target_col: str | None = None) -> tuple[ndarray, ndarray, ndarray, ndarray]:
+        target_col: str | list | None = None) -> tuple[ndarray, ndarray, ndarray, ndarray]:
+    """ Extract sequential training and testing data for RNN/LSTM models.
+    Parameters
+    ----------
+    data : DataFrame
+        Input dataframe.
+    timesteps : int
+        Number of time steps for sequences.
+    train_rate : float
+        Proportion of data used for training.
+    target_col : str | list[str] | None
+        Column(s) to predict. If None, use all columns.
+
+    Returns
+    -------
+    X_train, y_train, X_test, y_test : ndarray
+        Arrays ready for RNN input.
+        - X_train: shape (n_samples_train, timesteps, n_features)
+        - y_train: shape (n_samples_train,) for single target or (n_samples_train, n_targets)
+        - X_test: same as X_train
+        - y_test: same as y_train
+    """
+    print(type(target_col), target_col)
+    # Determine target column indices
     # Single col
     if isinstance(target_col, str):
         target_index = data.columns.get_loc(target_col)
@@ -184,27 +207,35 @@ def sequential_data_extractor(
     elif target_col is None:
         target_index = list(range(data.shape[1]))
     else:
-        raise TypeError("target_col must be str or None")
+        raise TypeError("target_col must be str, list of str, or None")
 
-    train_size: int = int(len(data) * train_rate)
-    train: ndarray = data[: train_size].values
-    X_train: list = []
-    y_train: list = []
-    for i in range(len(train) - timesteps):
-        X_train.append(train[i: i + timesteps])
-        y_train.append(train[i + timesteps, target_index])
+    # Split train/test
+    train_size = int(len(data) * train_rate)
+    train_values = data.iloc[:train_size].values
+    test_values = data.iloc[train_size:].values
 
-    test: ndarray = data[train_size:].values
-    X_test: list = []
-    y_test: list = []
-    for i in range(len(test) - timesteps):
-        X_test.append(test[i: i + timesteps])
-        y_test.append(test[i + timesteps, target_index])
+    # Prepare sequences
+    X_train, y_train = [], []
+    for i in range(len(train_values) - timesteps):
+        X_train.append(train_values[i:i + timesteps, target_index])
+        y_train.append(train_values[i + timesteps, target_index])
 
-    X_train: ndarray = array(X_train)
-    y_train: ndarray = array(y_train)
-    X_test: ndarray = array(X_test)
-    y_test: ndarray = array(y_test)
+    X_test, y_test = [], []
+    for i in range(len(test_values) - timesteps):
+        X_test.append(test_values[i:i + timesteps, target_index])
+        y_test.append(test_values[i + timesteps, target_index])
+
+    # Convert to arrays
+    X_train = array(X_train)
+    y_train = array(y_train)
+    X_test = array(X_test)
+    y_test = array(y_test)
+
+    # If only one target column, flatten y to shape (n_samples,)
+    if len(target_index) == 1:
+        y_train = y_train.flatten()
+        y_test = y_test.flatten()
+
     print(type(X_train), type(y_train), type(X_test), type(y_test))
     print(X_train.shape, y_train.shape, X_test.shape, y_test.shape)
     return X_train, y_train, X_test, y_test
