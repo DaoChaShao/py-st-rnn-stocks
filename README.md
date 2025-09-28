@@ -8,9 +8,11 @@
 This notebook/app uses
 the [Huge Stock Market Dataset](https://www.kaggle.com/datasets/borismarjanovic/price-volume-data-for-all-us-stocks-etfs)
 from Kaggle to practice time-series forecasting with RNNs (LSTM/GRU) in a Streamlit front-end. We focus on Apple (AAPL)
-and Google (GOOG / GOOGL) daily price series from the dataset, perform standard preprocessing (resampling, missing-value
-handling, scaling, sliding windows), train simple RNN models, and show predictions and diagnostics in an interactive
-Streamlit UI.
+and Google (GOOG / GOOGL) daily price series from the dataset. This project provides a Python-based toolkit for data
+processing and RNN/LSTM model training, tailored for time series analysis. It integrates the full workflow including
+data reading, cleaning, standardization, normalization, feature importance analysis, sequential data splitting, model
+training, and real-time prediction. With a Streamlit front-end, it enables interactive data visualization and model
+management for fast validation and iteration.
 
 **DATA DESCRIPTION**
 ---
@@ -41,6 +43,15 @@ Streamlit UI.
 **FEATURES**
 ---
 
+- Structured reading of TXT files.
+- Automatic removal of useless columns (e.g., Volume, OpenInt, Date).
+- Standardization (StandardScaler) and normalization (MinMaxScaler) of data.
+- Feature importance analysis using PCA explained_variance_ratio.
+- Sequential data extraction and splitting, ready for RNN/LSTM training and testing.
+- Custom Keras Callbacks for updating Streamlit metrics during training.
+- Support for training, saving, loading, and deleting models.
+- Real-time data upload and prediction capability.
+- Visualization of raw data, standardized data, normalized data, feature importance, and prediction results.
 
 **QUICK START**
 ---
