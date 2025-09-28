@@ -9,10 +9,10 @@
 from pandas import DataFrame
 from os import path
 from sklearn.metrics import mean_absolute_error, mean_squared_error, root_mean_squared_error, r2_score
-from streamlit import (empty, sidebar, subheader, session_state, multiselect, caption, slider,
+from streamlit import (empty, sidebar, subheader, session_state, slider,
                        button, spinner, rerun,
                        columns, metric)
-from tensorflow.keras import models, metrics
+from tensorflow.keras import models
 
 from utils.config import SAVE_MODEL_PATH
 from utils.helper import Timer
@@ -21,9 +21,9 @@ empty_messages: empty = empty()
 empty_results_title: empty = empty()
 col_mae, col_mse, col_rMse, col_r2 = columns(4, gap="small")
 empty_norm_title: empty = empty()
-emptu_norm_chart: empty = empty()
+empty_norm_chart: empty = empty()
 
-load_sessions: list[str] = ["loaded_model", "loadTimer"]
+load_sessions: list[str] = ["loaded_model", "loadedTimer"]
 for load_session in load_sessions:
     session_state.setdefault(load_session, None)
 norm_sessions: list[str] = ["norm"]
@@ -50,13 +50,15 @@ with sidebar:
 
                 if button("Load the Trained Model", type="primary", width="stretch"):
                     with spinner("Loading Trained Model...", show_time=True, width="stretch"):
-                        with Timer("Load the trained model") as session_state["loadTimer"]:
+                        with Timer("Load the trained model") as session_state["loadedTimer"]:
                             session_state["loaded_model"] = models.load_model(SAVE_MODEL_PATH, compile=False)
                             # session_state["loaded_model"] = session_state["model"]
                     rerun()
             else:
                 if session_state["y_pred"] is None:
-                    empty_messages.info("The trained model has been loaded. Test the model right now.")
+                    empty_messages.info(
+                        f"{session_state["loadedTimer"]} The trained model has been loaded. Test the model right now."
+                    )
 
                     if button("Test the Trained Model", type="primary", width="stretch"):
                         with spinner("Testing the trained model", show_time=True, width="stretch"):
@@ -93,4 +95,4 @@ with sidebar:
                         "Pred": session_state["y_pred"].flatten(),
                     }).iloc[start: end + 1]
                     empty_norm_title.markdown("#### The Test Chart")
-                    emptu_norm_chart.line_chart(comparison, width="stretch")
+                    empty_norm_chart.line_chart(comparison, width="stretch")
