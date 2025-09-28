@@ -14,7 +14,7 @@ from streamlit import (empty, sidebar, subheader, session_state,
 from tensorflow.keras import models, layers, metrics
 
 from utils.config import COLS, MAIN_COL, SAVE_MODEL_PATH
-from utils.helper import Timer, data_normaliser, sequential_data_extractor
+from utils.helper import Timer, data_normaliser, sequential_data_extractor_and_spliter
 
 empty_messages: empty = empty()
 empty_results_title: empty = empty()
@@ -115,7 +115,7 @@ with sidebar:
                                 (
                                     session_state["X_train"], session_state["y_train"],
                                     session_state["X_test"], session_state["y_test"],
-                                ) = sequential_data_extractor(
+                                ) = sequential_data_extractor_and_spliter(
                                     data=session_state["norm"],
                                     timesteps=time_steps,
                                     train_rate=split_rate,
@@ -151,7 +151,7 @@ with sidebar:
                                             shape=(session_state["X_train"].shape[1], session_state["X_train"].shape[2])
                                         ),
                                         layers.SimpleRNN(units=32, activation="relu"),
-                                        # Multiple cols
+                                        # Multiple cols/dimensions
                                         layers.Dense(units=session_state["y_train"].shape[1], activation="linear"),
                                     ])
                                     session_state["model"].compile(
