@@ -13,4 +13,7 @@ empty_messages.info("Please check the details at the different pages of core fun
 
 title("Convolutional Neural Network (CNN) - VGG16 for Cat & Dog Classification")
 with expander("**INTRODUCTION**", expanded=True):
-    caption("+")
+    caption("+ This project provides a complete RNN/LSTM data processing and training workflow.")
+    caption("+ It integrates data reading, cleaning, standardization, normalization, feature analysis, sequential splitting, model training, and prediction.")
+    caption("+ With Streamlit frontend, it enables interactive data visualization and model management.")
+
