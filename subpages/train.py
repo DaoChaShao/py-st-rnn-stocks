@@ -28,7 +28,7 @@ main_chart, main_table = columns(2, gap="small")
 load_sessions: list[str] = ["raw"]
 for session in load_sessions:
     session_state.setdefault(session, None)
-norm_sessions: list[str] = ["norm", "norTimer", "y_norm"]
+norm_sessions: list[str] = ["norm", "norTimer"]
 for session in norm_sessions:
     session_state.setdefault(session, None)
 pro_sessions: list[str] = ["X_train", "y_train", "X_test", "y_test", "proTimer"]
@@ -70,20 +70,20 @@ with sidebar:
             print(type(session_state["norm"]), session_state["norm"].shape)
             session_state["norm"] = DataFrame(session_state["norm"], columns=COLS)
 
-            session_state["y_norm"]: list[str] = multiselect(
+            y_norm: list[str] = multiselect(
                 "Select the feature to be trained",
-                options=session_state["norm"].columns.tolist(), default=[MAIN_COL],
+                options=session_state["norm"].columns.tolist(),
                 help="Select the feature to be trained for RNN model.",
             )
-            print(session_state["y_norm"])
-            caption(f"Note: the feature(s) is/are {", ".join(session_state["y_norm"])}")
+            print(y_norm)
+            caption(f"Note: the feature(s) is/are {", ".join(y_norm)}")
 
-            if not session_state["y_norm"]:
+            if not y_norm:
                 empty_messages.error("Please select at least one feature to be trained.")
             else:
                 empty_norm_title.markdown("#### Normalised Data Overview")
                 with norm_chart:
-                    line_chart(session_state["norm"], y=session_state["y_norm"], width="stretch")
+                    line_chart(session_state["norm"], y=y_norm, width="stretch")
                 with norm_table:
                     data_editor(session_state["norm"], hide_index=True, disabled=True, width="stretch")
 
@@ -119,7 +119,7 @@ with sidebar:
                                     data=session_state["norm"],
                                     timesteps=time_steps,
                                     train_rate=split_rate,
-                                    target_col=session_state["y_norm"],
+                                    target_col=y_norm,
                                 )
                         rerun()
                 else:
@@ -151,7 +151,8 @@ with sidebar:
                                             shape=(session_state["X_train"].shape[1], session_state["X_train"].shape[2])
                                         ),
                                         layers.SimpleRNN(units=32, activation="relu"),
-                                        layers.Dense(units=1, activation="linear"),
+                                        # Multiple cols
+                                        layers.Dense(units=session_state["y_train"].shape[1], activation="linear"),
                                     ])
                                     session_state["model"].compile(
                                         optimizer="adam",
