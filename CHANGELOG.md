@@ -5,6 +5,7 @@
 
 ### Features
 
+- implement real-time prediction interface with data loading, normalization, and model evaluation ([7d38147](https://github.com///commit/7d38147c3e08b93b2e8daffc53a989b9dd0658a4))
 - enhance data processing and model training features with improved metrics ([93da3c8](https://github.com///commit/93da3c8385f1ce6b30a59f446fc4018c015ec82b))
 - implement model testing interface with metrics display ([323dd28](https://github.com///commit/323dd28a89e4c559d9ffa0702107b48df263267b))
 - add caption to display selected training features in the model training interface ([7c8cb29](https://github.com///commit/7c8cb29f5dcd05dc82b367e13fa9885f4236c096))
@@ -58,6 +59,7 @@
 
 ### Docs
 
+- update CHANGELOG.md to reflect recent documentation updates and enhancements ([df56f68](https://github.com///commit/df56f68613e387026614f81ea678c9d011592902))
 - retrain the model and update the model ([e205ca7](https://github.com///commit/e205ca7b146ba4e0f87cd5fcb48b61cc7d5a0287))
 - update CHANGELOG.md to include recent feature enhancements ([785b0e1](https://github.com///commit/785b0e1181b647e8a13230f8f8824517b1695b76))
 - update the model ([4730ee0](https://github.com///commit/4730ee04d6e52c1e0b14ade41da7d424408c48c8))
@@ -71,6 +73,9 @@
 
 ### Code Refactoring
 
+- rename sequential_data_extractor to sequential_data_extractor_and_spliter for clarity and update usage in train.py ([b3425ea](https://github.com///commit/b3425ea7c7c4982c42b75eebfca61cc92fb3ce77))
+- fix variable names and improve session state handling in test.py ([f130b1a](https://github.com///commit/f130b1a1b1ca37f7f33251c4955c118618bde6fd))
+- rename sequential_data_extractor function and add sequential_data_extractor for RNN/LSTM data preparation ([5013bb5](https://github.com///commit/5013bb5e6e5f12e2d2d9d64f36b9894b7f85d477))
 - streamline feature selection and update session state handling in train.py ([76fda7e](https://github.com///commit/76fda7e137607e84c47a3faaaeabe1a5a324181f))
 - simplify session state management and clean up unused code in test.py ([471e83f](https://github.com///commit/471e83f148b1dc997058fc0e48000f9ca537daa7))
 - remove unused code and streamline session state management in train.py ([97c07d5](https://github.com///commit/97c07d5a4f7cd2119b0a3d9f4d85206b9e016f2d))
