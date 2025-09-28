@@ -11,7 +11,7 @@ from pandas import DataFrame
 from streamlit import (empty, sidebar, subheader, session_state,
                        button, spinner, rerun, number_input, selectbox, multiselect, select_slider, caption,
                        columns, line_chart, data_editor, metric)
-from tensorflow.keras import models, layers
+from tensorflow.keras import models, layers, metrics
 
 from utils.config import COLS, MAIN_COL, SAVE_MODEL_PATH
 from utils.helper import Timer, data_normaliser, sequential_data_extractor
@@ -28,7 +28,7 @@ main_chart, main_table = columns(2, gap="small")
 load_sessions: list[str] = ["raw"]
 for session in load_sessions:
     session_state.setdefault(session, None)
-norm_sessions: list[str] = ["norm", "norTimer"]
+norm_sessions: list[str] = ["norm", "norTimer", "y_norm"]
 for session in norm_sessions:
     session_state.setdefault(session, None)
 pro_sessions: list[str] = ["X_train", "y_train", "X_test", "y_test", "proTimer"]
@@ -70,20 +70,20 @@ with sidebar:
             print(type(session_state["norm"]), session_state["norm"].shape)
             session_state["norm"] = DataFrame(session_state["norm"], columns=COLS)
 
-            y_norm: list[str] = multiselect(
+            session_state["y_norm"]: list[str] = multiselect(
                 "Select the feature to be trained",
                 options=session_state["norm"].columns.tolist(), default=[MAIN_COL],
                 help="Select the feature to be trained for RNN model.",
             )
-            print(y_norm)
-            caption(f"Note: the feature(s) is/are {", ".join(y_norm)}")
+            print(session_state["y_norm"])
+            caption(f"Note: the feature(s) is/are {", ".join(session_state["y_norm"])}")
 
-            if not y_norm:
+            if not session_state["y_norm"]:
                 empty_messages.error("Please select at least one feature to be trained.")
             else:
                 empty_norm_title.markdown("#### Normalised Data Overview")
                 with norm_chart:
-                    line_chart(session_state["norm"], y=y_norm, width="stretch")
+                    line_chart(session_state["norm"], y=session_state["y_norm"], width="stretch")
                 with norm_table:
                     data_editor(session_state["norm"], hide_index=True, disabled=True, width="stretch")
 
@@ -109,9 +109,9 @@ with sidebar:
                         help="Proportion of the dataset to include in the train split.",
                     )
 
-                    if button("Process the Train & Test Data", type="primary", width="stretch"):
-                        with spinner("Process the Train & Test Data", show_time=True, width="stretch"):
-                            with Timer("Train & Test Data Processing") as session_state["proTimer"]:
+                    if button("Split the Train & Test Data", type="primary", width="stretch"):
+                        with spinner("Split the Train & Test Data", show_time=True, width="stretch"):
+                            with Timer("Train & Test Data Splitting") as session_state["proTimer"]:
                                 (
                                     session_state["X_train"], session_state["y_train"],
                                     session_state["X_test"], session_state["y_test"],
@@ -119,7 +119,7 @@ with sidebar:
                                     data=session_state["norm"],
                                     timesteps=time_steps,
                                     train_rate=split_rate,
-                                    target_col=y_norm,
+                                    target_col=session_state["y_norm"],
                                 )
                         rerun()
                 else:
@@ -156,7 +156,11 @@ with sidebar:
                                     session_state["model"].compile(
                                         optimizer="adam",
                                         loss="mse",
-                                        metrics=["mae", "mse"],
+                                        metrics=[
+                                            metrics.MeanAbsoluteError(name="mae"),
+                                            metrics.MeanSquaredError(name="mse"),
+                                            metrics.RootMeanSquaredError(name="rmse"),
+                                        ],
                                     )
                                     print(session_state["model"].summary())
                                     session_state["histories"] = session_state["model"].fit(
@@ -214,7 +218,7 @@ with sidebar:
                                         empty_messages.success(f"Model deleted from {SAVE_MODEL_PATH}.")
                                 rerun()
 
-                    if button("Clear the Processed Data", type="secondary", width="stretch"):
+                    if button("Clear the Split Data", type="secondary", width="stretch"):
                         with spinner("Clearing data...", show_time=True, width="stretch"):
                             with Timer("Data Clearing") as timer:
                                 for session in pro_sessions:
