@@ -5,6 +5,8 @@
 
 ### Features
 
+- enhance data processing and model training features with improved metrics ([93da3c8](https://github.com///commit/93da3c8385f1ce6b30a59f446fc4018c015ec82b))
+- implement model testing interface with metrics display ([323dd28](https://github.com///commit/323dd28a89e4c559d9ffa0702107b48df263267b))
 - add caption to display selected training features in the model training interface ([7c8cb29](https://github.com///commit/7c8cb29f5dcd05dc82b367e13fa9885f4236c096))
 - train a new model ([16427d6](https://github.com///commit/16427d6587e340a169086b502c9e9d91abb1aaf0))
 - enhance sequential data extractor to support multiple target columns ([9ba4062](https://github.com///commit/9ba4062192c1a8e015e751076bf86abd064d3457))
@@ -56,8 +58,9 @@
 
 ### Docs
 
+- update the model ([4730ee0](https://github.com///commit/4730ee04d6e52c1e0b14ade41da7d424408c48c8))
+- update CHANGELOG.md to include recent feature additions ([a31c486](https://github.com///commit/a31c486f7b510f1265f4890a76359242ae3747ee))
 - update CHANGELOG.md to reflect recent feature additions and enhancements ([3d1a138](https://github.com///commit/3d1a1386e10614972c5980acda9c7e5f2142916a))
-- update CHANGELOG.md to include recent feature additions ([d78f1c0](https://github.com///commit/d78f1c09503880447ab10b906a7460dc3742ea39))
 - update CHANGELOG.md to reflect recent feature additions ([1ebbc75](https://github.com///commit/1ebbc758aed2da089c404324e7147f3671809360))
 - reduce the amount of data ([0814e58](https://github.com///commit/0814e58ce9c7fd4b312e4c52fcc95164f0351893))
 - update CHANGELOG.md to include recent feature additions and enhancements ([477365c](https://github.com///commit/477365cbc57a43124ed8c18f0f474935bee73c41))
