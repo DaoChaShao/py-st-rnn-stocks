@@ -146,6 +146,11 @@ with sidebar:
                         if button("Train the Model", type="primary", width="stretch"):
                             with spinner("Training the Model", show_time=True, width="stretch"):
                                 with Timer("Model Training") as session_state["tTimer"]:
+                                    # Set the single and multiple cols/dimensions
+                                    if len(session_state["y_train"].shape) == 1:
+                                        session_state["y_train"] = session_state["y_train"].reshape(-1, 1)
+                                    print(f"Current cols/dimensions is/are **{session_state["y_train"].shape[1]}**.")
+                                    # Set the RNN model
                                     session_state["model"]: models.Sequential = models.Sequential([
                                         layers.Input(
                                             shape=(session_state["X_train"].shape[1], session_state["X_train"].shape[2])
