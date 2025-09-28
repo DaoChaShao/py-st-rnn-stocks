@@ -59,6 +59,8 @@
 
 ### Docs
 
+- add captions to clarify feature requirements in realtime.py ([d69a4be](https://github.com///commit/d69a4beac2dff187e8dfa00a2ce469fe7b001b92))
+- update CHANGELOG.md to reflect recent documentation updates and enhancements ([bdec876](https://github.com///commit/bdec876249ed2f95f715f7049c792cbf5e8f9d0d))
 - update title in home.py to reflect RNN application for stocks prediction ([3cb216f](https://github.com///commit/3cb216ffd5aba9d13596fcb9e10b3e83c4389acf))
 - update CHANGELOG.md to include recent documentation enhancements and feature updates ([cefc3b3](https://github.com///commit/cefc3b3a889a9b7ec62178239f99d04eca16c85e))
 - enhance Chinese README.md with detailed project features and capabilities for RNN/LSTM toolkit ([23925c5](https://github.com///commit/23925c51407a2404dcd08489f543f73388474adb))
@@ -66,7 +68,6 @@
 - update project introduction in home.py to detail RNN/LSTM workflow and Streamlit integration ([a21143c](https://github.com///commit/a21143cf241c87288791fe362c7f0778e6f838f3))
 - enhance application information in about.py with detailed features and capabilities ([1431ba0](https://github.com///commit/1431ba0eb254c4ee86001b3871cfd16ef66c19c2))
 - update CHANGELOG.md to include recent feature and documentation updates ([e8c4788](https://github.com///commit/e8c4788f9aa5d115ad718b71ad4756fa5c3bfa49))
-- update CHANGELOG.md to reflect recent documentation updates and enhancements ([df56f68](https://github.com///commit/df56f68613e387026614f81ea678c9d011592902))
 - retrain the model and update the model ([e205ca7](https://github.com///commit/e205ca7b146ba4e0f87cd5fcb48b61cc7d5a0287))
 - update CHANGELOG.md to include recent feature enhancements ([785b0e1](https://github.com///commit/785b0e1181b647e8a13230f8f8824517b1695b76))
 - update the model ([4730ee0](https://github.com///commit/4730ee04d6e52c1e0b14ade41da7d424408c48c8))
