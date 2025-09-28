@@ -59,6 +59,11 @@
 
 ### Docs
 
+- update train.py to reshape y_train and clarify dimensions during model training ([d27cb55](https://github.com///commit/d27cb55a7aca1baf02402389bf9eb84f2417378e))
+- add caption in test.py to clarify test data requirements for the model ([f801bae](https://github.com///commit/f801bae292b8389e3e4602d67d9ce621f56e0ece))
+- retrain and update the rnn model with two features, such as Open column and High column. ([bf13ad5](https://github.com///commit/bf13ad54e6ca04f21e479c12e4732e3bbb081372))
+- update captions in realtime.py to clarify model requirements ([fc7537b](https://github.com///commit/fc7537ba655faf16fa1506e9d32fe7b6406e7825))
+- update CHANGELOG.md to include recent documentation updates and enhancements ([0acc893](https://github.com///commit/0acc893a30a46f3d240845d151e7c37655d679a0))
 - add captions to clarify feature requirements in realtime.py ([d69a4be](https://github.com///commit/d69a4beac2dff187e8dfa00a2ce469fe7b001b92))
 - update CHANGELOG.md to reflect recent documentation updates and enhancements ([bdec876](https://github.com///commit/bdec876249ed2f95f715f7049c792cbf5e8f9d0d))
 - update title in home.py to reflect RNN application for stocks prediction ([3cb216f](https://github.com///commit/3cb216ffd5aba9d13596fcb9e10b3e83c4389acf))
