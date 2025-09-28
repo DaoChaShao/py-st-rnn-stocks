@@ -77,7 +77,7 @@ with sidebar:
                     options=cols,
                     help="Select the feature to display in the chart below.",
                 )
-                caption("The features to meet the trained model requirements must be **Open** and **High**.")
+                caption("Note: The features to meet the trained model requirements must be **Open** and **High**.")
 
                 if not y:
                     empty_messages.error("Please select at least one feature to be y-axis.")
@@ -130,7 +130,7 @@ with sidebar:
                                     step=1,
                                     help="Number of time steps to look back for each prediction.",
                                 )
-                                caption("The step to **meet the trained model requirements** must be **8**.")
+                                caption("Note: The step to **meet the trained model requirements** must be **8**.")
 
                                 if button("Extract the Test Data", type="primary", width="stretch"):
                                     with spinner("Split the Train & Test Data", show_time=True, width="stretch"):
