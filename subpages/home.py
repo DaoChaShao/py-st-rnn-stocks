@@ -11,7 +11,7 @@ from streamlit import title, expander, caption, empty
 empty_messages = empty()
 empty_messages.info("Please check the details at the different pages of core functions.")
 
-title("Convolutional Neural Network (CNN) - VGG16 for Cat & Dog Classification")
+title("Recurrent Neural Network (RNN) - Stocks Prediction")
 with expander("**INTRODUCTION**", expanded=True):
     caption("+ This project provides a complete RNN/LSTM data processing and training workflow.")
     caption("+ It integrates data reading, cleaning, standardization, normalization, feature analysis, sequential splitting, model training, and prediction.")
