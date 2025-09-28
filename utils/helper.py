@@ -170,7 +170,7 @@ def importance_analyser(arr) -> list[float]:
     return pca.explained_variance_ratio_.tolist()
 
 
-def sequential_data_extractor(
+def sequential_data_extractor_and_spliter(
         data: DataFrame, timesteps: int,
         train_rate: float = 0.8,
         target_col: str | list | None = None) -> tuple[ndarray, ndarray, ndarray, ndarray]:
@@ -239,3 +239,28 @@ def sequential_data_extractor(
     print(type(X_train), type(y_train), type(X_test), type(y_test))
     print(X_train.shape, y_train.shape, X_test.shape, y_test.shape)
     return X_train, y_train, X_test, y_test
+
+
+def sequential_data_extractor(data: ndarray, timesteps: int):
+    """ Extract sequential data for RNN/LSTM models using all columns as target.
+    Args:
+        data (ndarray): Input data, shape (num_samples, num_features)
+        timesteps (int): Number of past steps to use for X
+
+    Returns:
+        X (ndarray): shape (num_samples, timesteps, num_features)
+        y (ndarray): shape (num_samples, num_features)
+    """
+    print(type(timesteps), timesteps)
+
+    X, y = [], []
+
+    for i in range(len(data) - timesteps):
+        X.append(data[i: i + timesteps])
+        y.append(data[i + timesteps])
+
+    X = array(X)
+    y = array(y)
+    print(type(X), X.shape)
+    print(type(y), y.shape)
+    return X, y
