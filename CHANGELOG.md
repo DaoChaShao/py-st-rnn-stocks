@@ -59,6 +59,8 @@
 
 ### Docs
 
+- update title in home.py to reflect RNN application for stocks prediction ([3cb216f](https://github.com///commit/3cb216ffd5aba9d13596fcb9e10b3e83c4389acf))
+- update CHANGELOG.md to include recent documentation enhancements and feature updates ([cefc3b3](https://github.com///commit/cefc3b3a889a9b7ec62178239f99d04eca16c85e))
 - enhance Chinese README.md with detailed project features and capabilities for RNN/LSTM toolkit ([23925c5](https://github.com///commit/23925c51407a2404dcd08489f543f73388474adb))
 - enhance README.md to provide detailed project overview and feature list for RNN/LSTM toolkit ([2c65253](https://github.com///commit/2c652534d026843446610c6951039cd85dfc8c21))
 - update project introduction in home.py to detail RNN/LSTM workflow and Streamlit integration ([a21143c](https://github.com///commit/a21143cf241c87288791fe362c7f0778e6f838f3))
