@@ -9,7 +9,7 @@
 from pandas import DataFrame
 from os import path
 from sklearn.metrics import mean_absolute_error, mean_squared_error, root_mean_squared_error, r2_score
-from streamlit import (empty, sidebar, subheader, session_state, slider,
+from streamlit import (empty, sidebar, subheader, session_state, slider, caption,
                        button, spinner, rerun,
                        columns, metric)
 from tensorflow.keras import models
@@ -41,6 +41,9 @@ with sidebar:
         empty_messages.error("Please train the model first.")
     else:
         subheader("Test Model Settings")
+        caption(
+            "Note: The cols/dimensions of the test data to meet the trained model requirements must be **Open** and **High**."
+        )
 
         if session_state["X_test"] is None and session_state["y_test"] is None:
             empty_messages.warning("Please obtain the split data in the **Model Training section**.")
