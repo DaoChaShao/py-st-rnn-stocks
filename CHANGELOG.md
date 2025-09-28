@@ -58,6 +58,8 @@
 
 ### Docs
 
+- retrain the model and update the model ([e205ca7](https://github.com///commit/e205ca7b146ba4e0f87cd5fcb48b61cc7d5a0287))
+- update CHANGELOG.md to include recent feature enhancements ([785b0e1](https://github.com///commit/785b0e1181b647e8a13230f8f8824517b1695b76))
 - update the model ([4730ee0](https://github.com///commit/4730ee04d6e52c1e0b14ade41da7d424408c48c8))
 - update CHANGELOG.md to include recent feature additions ([a31c486](https://github.com///commit/a31c486f7b510f1265f4890a76359242ae3747ee))
 - update CHANGELOG.md to reflect recent feature additions and enhancements ([3d1a138](https://github.com///commit/3d1a1386e10614972c5980acda9c7e5f2142916a))
@@ -69,5 +71,7 @@
 
 ### Code Refactoring
 
+- streamline feature selection and update session state handling in train.py ([76fda7e](https://github.com///commit/76fda7e137607e84c47a3faaaeabe1a5a324181f))
+- simplify session state management and clean up unused code in test.py ([471e83f](https://github.com///commit/471e83f148b1dc997058fc0e48000f9ca537daa7))
 - remove unused code and streamline session state management in train.py ([97c07d5](https://github.com///commit/97c07d5a4f7cd2119b0a3d9f4d85206b9e016f2d))
 
