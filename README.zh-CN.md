@@ -8,7 +8,9 @@
 本项目使用 Kaggle
 上的 [Huge Stock Market Dataset](https://www.kaggle.com/datasets/borismarjanovic/price-volume-data-for-all-us-stocks-etfs)
 作为数据源，在 Streamlit 前端下练习基于 RNN（LSTM/GRU）的时间序列预测。示例聚焦 Apple（AAPL）与 Google（GOOG /
-GOOGL）日线数据：完成数据预处理（日期对齐、空值处理、归一化、滑动窗口）、训练简单 RNN，并在交互式界面展示预测结果与诊断分析。
+GOOGL）日线数据。本项目提供了一套基于 Python 的数据处理与 RNN/LSTM
+模型训练工具，适用于时间序列数据分析。工具集成了数据读取、清洗、标准化、归一化、特征重要性分析、序列数据拆分、模型训练、实时预测等完整流程。通过
+Streamlit 前端界面，可实现交互式数据可视化与模型训练管理，便于快速验证与迭代。
 
 **数据描述**
 ---
@@ -34,6 +36,15 @@ GOOGL）日线数据：完成数据预处理（日期对齐、空值处理、归
 **特色功能**
 ---
 
+- 支持 TXT 文件的结构化读取。
+- 自动删除无用列（如 Volume、OpenInt、Date）。
+- 提供标准化（StandardScaler）和归一化（MinMaxScaler）数据处理。
+- 计算特征重要性（PCA explained_variance_ratio）。
+- 序列数据提取与拆分，直接生成 RNN/LSTM 可用的训练和测试集。
+- 提供自定义 Keras Callback，用于训练过程中实时更新 Streamlit 指标。
+- 支持训练、保存、加载、删除模型操作。
+- 提供实时数据上传与预测功能。
+- 可视化数据、标准化结果、归一化结果、特征重要性及预测结果。
 
 **快速开始**
 ---
